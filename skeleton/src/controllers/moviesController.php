@@ -40,8 +40,12 @@ if (isset($_POST['addBook']) && isset($_POST['title']) && isset($_POST['type']) 
         $error['title'] = 'Le titre ne doit pas dépasser les 255 caractères';
     }
 }
+if (isset($_GET['filter'])) {
+    $listMovies = $_GET['filter'] == 'all' ? $movies->getAll() : $movies->getAllByType($_GET['filter']);
+} else {
+    $listMovies = $movies->getAll();
+}
 
-$listMovies = $movies->getAll();
 $_SESSION['listMovies'] = $listMovies;
 render('movies', false, [
     'error' => $error,

@@ -70,4 +70,12 @@ class Movie extends Database
     }
 
 
+    public function getAllByType($type)
+    {
+        $queryExecute = $this->db->prepare("SELECT * FROM `movies` WHERE `type` = :type ORDER BY created_at");
+        $queryExecute->bindValue(':type', $type, PDO::PARAM_STR);
+        $queryExecute->execute();
+        return $queryExecute->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }

@@ -12,7 +12,15 @@ foreach ($_SESSION['listMovies'] as $film) {
     $watched = $film['is_watched'] == 0 ? "A voir" : "Vu";
     echo "<div><h2> " . $film['title'] . "</h2><h3>" . $film['genre'] . "</h3><p>" . $film['type'] . "</p>" . $film['rating'] . " / 5<p></p><p>" . $watched . "</p><div>";
 } ?>
-
+<form method="get">
+    <label for="filter">Ne voir que les </label>
+    <select required name="filter">
+        <option value="all">Tout</option>
+        <option value="film">Films</option>
+        <option required value="serie">Séries</option>
+    </select>
+    <button type="submit">Trier</button>
+</form>
 <form method="post">
     <label for="title">Titre</label>
     <input required type="text" name="title">
