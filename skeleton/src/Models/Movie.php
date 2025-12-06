@@ -78,4 +78,5 @@ class Movie extends Database
         return $queryExecute->fetchAll(PDO::FETCH_OBJ);
     }
 
+
 }
